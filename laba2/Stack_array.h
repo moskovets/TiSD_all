@@ -4,7 +4,7 @@
 
 #ifndef LABA2_STACK_ARRAY_H
 #define LABA2_STACK_ARRAY_H
-#define START_SIZE 5
+#define START_SIZE 50
 #define MAX_LEN_WORD 50
 #include <cstring>
 #include <assert.h>
