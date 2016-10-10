@@ -1,6 +1,7 @@
 //#include <iostream>
 #include "Stack_array.h"
 #include "Stack_list.h"
+#include <time.h>
 //#include <string>
 void array() {
     Stack_array A;
@@ -58,6 +59,7 @@ void array() {
                 delete []y;
                 break;
             case 3:
+                if(A.empty()) { cout << "Стек пустой!" << endl; break; }
                 while(!A.empty()){
                     y = A.pop();
                     cout << y << " ";
@@ -132,6 +134,7 @@ void list() {
                 delete []y;
                 break;
             case 3:
+                if(A.empty()) { cout << "Стек пустой!" << endl; break; }
                 while(!A.empty()){
                     y = A.pop();
                     cout << y << " ";
@@ -152,7 +155,32 @@ void list() {
     }
 }
 void compare_stack() {
-    //TODO
+    Stack_list A;
+    Stack_array B;
+    cout << "ok" << endl;
+    char x[MAX_LEN_WORD] = "asdfdsfd";
+    int iter = 5000;
+
+    time_t t1 = clock();
+    for (int i = 0; i < iter; i++) {
+        A.push(x);
+    }
+    for (int i = 0; i < iter; i++) {
+        A.pop();
+    }
+    time_t t2 = clock();
+    cout << "Время работы списка: "  << t2 - t1 << endl;
+
+
+    time_t t3 = clock();
+    for (int i = 0; i < iter; i++) {
+        B.push(x);
+    }
+    for (int i = 0; i < iter; i++) {
+        B.pop();
+    }
+    time_t t4 = clock();
+    cout << "Время работы массива: "  << t4 - t3;
 }
 int main()
 {
@@ -168,6 +196,7 @@ int main()
     switch(ch) {
         case 0:
             array();
+            break;
         case 1:
             list();
             break;
