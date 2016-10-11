@@ -7,6 +7,9 @@
     функция создания новой структуры
     возвращает NULL при неуспешном выделении памяти
 */
+my_list *memory[MAX_MEMORY];
+int m;
+
 my_list *create_node(char* x)
 {
     my_list *a = new my_list;
@@ -34,6 +37,8 @@ void free_all(my_list *head)
     for (; head; head = next)
     {
         next = head->next;
+        memory[m] = head;
+        m++;
         delete head;
     }
 }
@@ -55,6 +60,7 @@ Stack_list::Stack_list()
     max_size = START_SIZE;
     head = NULL;
     len = 0;
+    m = 0;
 }
 
 
@@ -73,6 +79,14 @@ void Stack_list::push(char* x)
         cout << "Cannot allocate memory";
         return;
     }
+    int j = 0;
+    for(int i = 0; i < m-j; i++) {
+        if(memory[i] == tmp) {
+            j++;
+        }
+        memory[i] = memory[i+j];
+    }
+    m -= j;
     head = add_to_list(tmp, head);
     len++;
     //if(top >= max_size) { increase(); }
@@ -83,6 +97,8 @@ char* Stack_list::pop()
     if(len == 0) { return 0; }
     strcpy(x, head->value);
     my_list* tmp = head->next;
+    memory[m] = head;
+    m++;
     delete head;
     head = tmp;
     len--;
@@ -101,14 +117,18 @@ void Stack_list::show()
     }
     print_list(head);
     cout << endl;
+    print_adr(head);
+    cout << endl;
 }
 void Stack_list::show_adr()
 {
-    if(len == 0) {
-        cout << "Stack is empty!" << endl;
+    if(m == 0) {
+        cout << "No free memory" << endl;
         return;
     }
-    print_adr(head);
+    for(int i = 0; i < m; i++) {
+        cout << memory[i] << " ";
+    }
     cout << endl;
 }
 bool Stack_list::is_full() {
