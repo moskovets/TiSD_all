@@ -1,0 +1,219 @@
+20
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Jap 2903 Tok 4 0 10 2
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
+Ukraine 500 Kiev 1 2 45 0
+Russia 2000 Moscow 3 0 23 1
+Belarus 200 Minsk 6 1 123 -4 6 1
+Moldova 20 Kishinev 3 0 25 2
+Poland 150 Varchava 5 2 56 2
+China 100000 Pekin 6 2 58 0
+Japan 2903 Tokio 4 0 1 2
+Ukr 550 Kiev 1 1 2 45 0 2
+Rus 100 Mos 1 0 23 2
+Bel 2000 Min 4 1 13 -4.5 6 1
+dova 204 shinev 3 0 25 2
+Pol 150 Vara 5 2 50 1
+Chin 100000 Gonkong 2 2 58 0
