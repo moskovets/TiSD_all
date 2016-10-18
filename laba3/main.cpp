@@ -3,6 +3,7 @@
 #include <time.h>
 #include "Table_key.h"
 #define MAX_RECORD_ARR 210
+/*
 int test() {
     MyRecord arr[100];
     ifstream inp;
@@ -29,7 +30,7 @@ int test() {
         arr[i].show();
         cout << endl;
     }
-/*
+
     Table_key keys[100];
     for(int i = 0; i < n; i++) {
         keys[i] = Table_key(i, arr[i]);
@@ -48,9 +49,10 @@ int test() {
         arr[keys[i].id].show();
     }
     cout << "---------------------------------------" << endl;
-*/
+
     return 0;
 }
+*/
 int main() {
     int a;
     int x;
@@ -86,6 +88,7 @@ int main() {
         {
             case 0:
                 for(int i = 0; i < n; i++) {
+                    cout << i << endl;
                     arr[i].show();
                     cout << endl;
                 }
@@ -134,6 +137,9 @@ int main() {
                 for(int i = x; i < n; i++) {
                     arr[i] = arr[i + 1];
                 }
+
+                arr[n].~MyRecord();
+                arr[n] = MyRecord();
                 cout << "Эл-т удален" << endl;
                 n--;
                 break;
@@ -147,8 +153,8 @@ int main() {
                 t3 = clock();
                 quick_sort(arr, arr + n - 1);
                 t4 = clock();
-                cout << "Время работы сортировки по ключам: " << t2 - t1 << endl;
-                cout << "Время работы сортировки таблицы: " << t4 - t3 << endl;
+                cout << "Время работы сортировки по ключам: " << t2 - t1 << " мс" << endl;
+                cout << "Время работы сортировки таблицы: " << t4 - t3  << " мс" << endl;
                 break;
             case 6:
                 for(int i = 0; i < n; i++) {
@@ -163,8 +169,8 @@ int main() {
                 t3 = clock();
                 buble_sort(keys, keys + n);
                 t4 = clock();
-                cout << "Время работы сортировки пузырьком: " << t4 - t3 << endl;
-                cout << "Время работы быстрой сортировки: " << t2 - t1 << endl;
+                cout << "Время работы сортировки пузырьком: " << t4 - t3 << " мс" << endl;
+                cout << "Время работы быстрой сортировки: " << t2 - t1 << " мс" << endl;
                 break;
             case 7:
                 show_skiing(arr, n);

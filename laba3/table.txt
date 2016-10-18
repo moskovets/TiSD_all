@@ -1,4 +1,4 @@
-20
+14
 Ukraine 500 Kiev 1 2 45 0
 Russia 2000 Moscow 3 0 23 1
 Belarus 200 Minsk 6 1 123 -4 6 1
