@@ -7,8 +7,6 @@
     функция создания новой структуры
     возвращает NULL при неуспешном выделении памяти
 */
-my_list *memory[MAX_MEMORY];
-int m;
 
 my_list *create_node(request x)
 {
@@ -31,7 +29,7 @@ my_list *add_to_list(my_list *tmp, my_list *head)
     head = tmp;
     return head;
 }
-void free_all(my_list *head)
+void free_all(my_list *head, my_list* memory[], int m)
 {
     my_list *next;
     for (; head; head = next)
@@ -60,7 +58,7 @@ CQueue_list::CQueue_list()
 
 CQueue_list::~CQueue_list()
 {
-    free_all(head);
+    free_all(head, memory, m);
     //cout << "~ " << endl;
 }
 
@@ -86,7 +84,7 @@ void CQueue_list::PushBack(request x)
         memory[i] = memory[i+j];
     }
     m -= j;
-    //info.in_request++;
+    info.in_request++;
     info.count_request++;
     info.tmp_size++;
     info.sum_size += info.tmp_size;
@@ -103,7 +101,7 @@ request CQueue_list::PopFront() {
     info.tmp_size--;
     info.sum_size += info.tmp_size;
     info.count_request++;
-    //info.out_request++;
+    info.out_request++;
     //x.time_out = time_out;
     //info.sum_time += time_out - x.time_in;
     if(info.tmp_size == 0) { head = tail = NULL; }
@@ -127,7 +125,7 @@ void CQueue_list::show_adr()
 }
 /*
  * информацию о текущей и средней длине очереди,
- * количестве вошедших и вышедших заявок и о среднем времени пребывания заявок в очереди.
+ *
  */
 void CQueue_list::show() {
 
@@ -136,4 +134,7 @@ void CQueue_list::show() {
     //cout << "Кол-во вошедших заявок: " << info.in_request << endl;
     //cout << "Кол-во вышедших заявок: " << info.out_request << endl;
     //cout << "Средне время пребывания в очереди: " << (double) info.sum_time / (double) info.out_request << endl;
+}
+bool CQueue_list::is_full() {
+    return info.tmp_size >= START_SIZE;
 }

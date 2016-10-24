@@ -8,7 +8,7 @@ CQueue_array::CQueue_array()
     //cout << "const" << endl;
     max_size = START_SIZE;
     info.count_request = info.sum_size = info.tmp_size = 0;
-    //info.sum_time = info.out_request = info.in_request = 0;
+    info.sum_time = info.out_request = info.in_request = 0;
     back = front = 0;
     arr = new request[max_size];
 }
@@ -67,7 +67,7 @@ void CQueue_array::PushBack(request x) {
     info.tmp_size++;
     info.sum_size += info.tmp_size;
     info.count_request++;
-    //info.in_request++;
+    info.in_request++;
     back--;
     back += max_size;
     back %= max_size;
@@ -79,7 +79,7 @@ request CQueue_array::PopFront() {
     info.tmp_size--;
     info.sum_size += info.tmp_size;
     info.count_request++;
-    //info.out_request++;
+    info.out_request++;
     front--;
     front += max_size;
     front %= max_size;

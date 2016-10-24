@@ -26,6 +26,7 @@ class CQueue_array {
         CQueue_array& operator= (const CQueue_array &obj);
         request * get_arr();
         void show();
+        void show_adr() {}
         bool is_full();
 };
 

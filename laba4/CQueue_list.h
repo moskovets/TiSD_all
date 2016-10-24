@@ -15,12 +15,14 @@ typedef struct Node {
 
 my_list *create_node(request x);
 my_list *add_to_list(my_list *tmp, my_list *head);
-void free_all(my_list *head);
+void free_all(my_list *head, my_list* memory, int m);
 void print_adr(my_list *head);
 
 
 class CQueue_list {
 private:
+    my_list *memory[MAX_MEMORY];
+    int m;
     my_list *head;
     my_list *tail;
     info_queue_request info;
@@ -32,6 +34,7 @@ public:
     request PopFront();
     void PushBack(request x);
     bool Empty_CQueue();
+    bool is_full();
 };
 
 

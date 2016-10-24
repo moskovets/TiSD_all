@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
-#define START_SIZE 1000
+#define START_SIZE 10000
 #define MAX_MEMORY 100
 
 using namespace std;
@@ -25,9 +25,9 @@ struct info_queue_request {
     int tmp_size = 0;
     int sum_size = 0;
     int count_request = 0;
-    //int in_request = 0;
-    //int out_request = 0;
-    //int sum_time = 0;
+    int in_request = 0;
+    int out_request = 0;
+    int sum_time = 0;
 };
 
 #endif //ALGO4_LIBRARY_H
