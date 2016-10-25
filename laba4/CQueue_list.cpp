@@ -91,11 +91,13 @@ void CQueue_list::PushBack(request x)
 }
 request CQueue_list::PopFront() {
     request x;
+    if(head == NULL) { return request(); }
     assert(info.tmp_size > 0);
     x = head->value;
     my_list* tmp = head->next;
     memory[m] = head;
     m++;
+    m %= MAX_MEMORY;
     delete head;
     head = tmp;
     info.tmp_size--;

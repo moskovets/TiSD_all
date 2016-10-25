@@ -18,16 +18,18 @@ template <typename T>
 void work(int n, int interval, interval_time t1, interval_time t2, interval_time t3, interval_time t4, int flag) {
     T que1;
     T que2;
-
     double time = 0.0;
     int type = 0;
     double tr1, tr2, tr_obr;
     int req_in1 = 0, req_in2 = 0, req_out1 = 0, req_out2 = 0;
     int req_show = 0;
     tr1 = tr2 = tr_obr = 0.;
+    time_t rtime1 = clock();
+
     while(req_out1 < n) {
         if(que1.is_full() or que2.is_full()) {
             cout << "Переполнение очереди!" << endl;
+            break;
         }
         if (tr1 == 0.) {
             tr1 = get_time(t1);
@@ -108,13 +110,16 @@ void work(int n, int interval, interval_time t1, interval_time t2, interval_time
             req_show = req_out1;
             cout << "Обработано (заявки 1-го типа) " << req_out1 << endl;
             que1.show();
-            //que2.show();
+            que2.show();
             cout << "--------------------------------" << endl;
         }
     }
+    time_t rtime2 = clock();
+    int real_time = rtime2 - rtime1;
     cout << "Общее время моделирования " << time << endl;
     cout << "Кол-во вошедших и вышедших (1 тип) " << req_in1 << " " << req_out1 << endl;
     cout << "Кол-во вошедших и вышедших (2 тип) " << req_in2 << " " << req_out2 << endl;
+    cout << "Время работы " << real_time << endl;
     if(flag == 1) {
         cout << "Незадействованные адреса эл-тов:\n";
         que1.show_adr();
@@ -191,4 +196,5 @@ int main()
     }
 
     return 0;
+
 }
