@@ -40,17 +40,6 @@ void work(int n, int interval, interval_time t1, interval_time t2, interval_time
         if(tr_obr == 0.) {
             switch(type) {
                 case 0:
-                    if (!que1.Empty_CQueue()) {
-                        type = 1;
-                        tr_obr = get_time(t3);
-                        que1.PopFront();
-                        //req_out++;
-                    } else if (!que2.Empty_CQueue()) {
-                        type = 2;
-                        tr_obr = get_time(t4);
-                        que2.PopFront();
-                    }
-                    break;
                 case 1:
                     if (!que1.Empty_CQueue()) {
                         type = 1;
@@ -85,15 +74,15 @@ void work(int n, int interval, interval_time t1, interval_time t2, interval_time
         else {
             tmin = min(tr1, min(tr2, tr_obr));
         }
-        if(tmin == tr1 && tmin) {
+        if(tmin == tr1) {
             que1.PushBack(request());
             req_in1++;
         }
-        if (tmin == tr2 && tmin) {
+        if (tmin == tr2) {
             que2.PushBack(request());
             req_in2++;
         }
-        if(tmin == tr_obr && tmin) {
+        if(tmin == tr_obr) {
             tr_obr = 0.;
             if(type == 1) {
                 req_out1++;

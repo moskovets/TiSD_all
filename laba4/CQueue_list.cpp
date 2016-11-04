@@ -29,14 +29,15 @@ my_list *add_to_list(my_list *tmp, my_list *head)
     head = tmp;
     return head;
 }
-void free_all(my_list *head, my_list* memory[], int m)
+void free_all(my_list *head, my_list* memory[], int *m)
 {
     my_list *next;
     for (; head; head = next)
     {
         next = head->next;
-        memory[m] = head;
-        m++;
+        memory[*m] = head;
+        (*m)++;
+        *m %= MAX_MEMORY;
         delete head;
     }
 }
@@ -58,7 +59,7 @@ CQueue_list::CQueue_list()
 
 CQueue_list::~CQueue_list()
 {
-    free_all(head, memory, m);
+    free_all(head, memory, &m);
     //cout << "~ " << endl;
 }
 
