@@ -2,6 +2,7 @@
 #include "library.h"
 #include "CQueue_array.h"
 #include "CQueue_list.h"
+// Структура хранящая интервал времени для моделирования  
 struct interval_time {
     double min;
     double max;
@@ -11,33 +12,56 @@ struct interval_time {
     }
 };
 
+//Функция возвращает случайное время из интервала
 double get_time(interval_time t) {
+    //rand() / (double)RAND_MAX -это рандомный коэффицент от 0 до 1
     return (t.max - t.min) * (double)(rand() / (double)RAND_MAX) + t.min;
 }
+
+/*
+ *n- количество заявок 1 типа которые нужно обработать
+ *interval - число заявок, после достижения которого  нужно напечатать состояние ОА и очередей
+ *t1- интервал времени для поступления заявки 1 типа
+ *t2- интервал времени для поступления заявки 2 типа 
+ *t2- интервал времени для обработки заявки 1 типа
+ *t4- интервал времени для обработки заявки 2 типа
+ *flag - флаг необходимости печатать адреса памяти
+*/
 template <typename T>
 void work(int n, int interval, interval_time t1, interval_time t2, interval_time t3, interval_time t4, int flag) {
+    //Очереди
     T que1;
     T que2;
+    //общий счетчик времени работы ОА
     double time = 0.0;
+    // тип заявки который сейчас в ОА
     int type = 0;
+    // время посрупления заявок и время их обработки
     double tr1, tr2, tr_obr;
+    // количесво запросов к очередям
     int req_in1 = 0, req_in2 = 0, req_out1 = 0, req_out2 = 0;
     int req_show = 0;
     tr1 = tr2 = tr_obr = 0.;
+
+    //Реальное время работы самой функции (старт)
     time_t rtime1 = clock();
 
     while(req_out1 < n) {
+
         if(que1.is_full() or que2.is_full()) {
             cout << "Переполнение очереди!" << endl;
             break;
         }
+
         if (tr1 == 0.) {
             tr1 = get_time(t1);
         }
         if (tr2 == 0.) {
             tr2 = get_time(t2);
         }
+
         if(tr_obr == 0.) {
+            //Эмуляция работы каждой итерации ОА 
             switch(type) {
                 case 0:
                 case 1:
@@ -67,13 +91,17 @@ void work(int n, int interval, interval_time t1, interval_time t2, interval_time
                     break;
             }
         }
+
         double tmin = 0.;
+
+        //Если ОА бездельничал, то время его бездействия не учитывается
         if(tr_obr == 0.) {
             tmin = min(tr1, tr2);
         }
         else {
             tmin = min(tr1, min(tr2, tr_obr));
         }
+        //Добавление заявок
         if(tmin == tr1) {
             que1.PushBack(request());
             req_in1++;
@@ -82,7 +110,8 @@ void work(int n, int interval, interval_time t1, interval_time t2, interval_time
             que2.PushBack(request());
             req_in2++;
         }
-        if(tmin == tr_obr) {
+        //Обработка заявок
+        if(tmin == tr_obr ) {
             tr_obr = 0.;
             if(type == 1) {
                 req_out1++;
@@ -93,8 +122,11 @@ void work(int n, int interval, interval_time t1, interval_time t2, interval_time
         }
         tr1 -= tmin;
         tr2 -= tmin;
+
+
         if(tr_obr >= tmin) { tr_obr -= tmin; }
         time += tmin;
+        //Промежуточная печать
         if(req_out1 % interval == 0 && req_out1 != req_show) {
             req_show = req_out1;
             cout << "Обработано (заявки 1-го типа) " << req_out1 << endl;
@@ -103,6 +135,8 @@ void work(int n, int interval, interval_time t1, interval_time t2, interval_time
             cout << "--------------------------------" << endl;
         }
     }
+
+    //Реальное время работы самой функции (стоп)
     time_t rtime2 = clock();
     int real_time = rtime2 - rtime1;
     cout << "Общее время моделирования " << time << endl;

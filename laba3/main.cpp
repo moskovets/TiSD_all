@@ -177,6 +177,7 @@ int main() {
                 break;
             case 8:
                 cout << "До свиданья)" << endl;
+                inp.close();
                 return 0;
             default:
                 cout << "Команда не найдена";
