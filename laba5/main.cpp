@@ -142,7 +142,7 @@ int ** hand_input(int* n, int* m) {
             a[i][j] = 0;
         }
     }
-    cout << "Введите по 3 числа для каждого ненулевого эл-та (номер строки, столбца начиная с нуля, значение) ";
+    cout << "Введите по 3 числа для каждого ненулевого эл-та (номер строки, столбца начиная с нуля, значение)\n ";
     while(1) {
         while (1) {
             int i = *n + 1, j = *m + 1, k = 0;
@@ -161,6 +161,7 @@ int ** hand_input(int* n, int* m) {
             break;
         }
     }
+    return a;
 }
 int ** auto_input(int* n, int* m) {
     double percent = -1;
@@ -189,7 +190,7 @@ int ** auto_input(int* n, int* m) {
 int ** input_matr(int *n, int *m) {
     int tmp;
     //*n = 0;
-    cout << "Ввод вектора-строки";
+    cout << "Марица\n";
     /*cout << "Введите кол-во строк [1, " << MAX_SIZE << "]: ";
     while(!(scanf("%d", n) && (*n >= 1) && (*n <= MAX_SIZE))) {
         cout << "error, попробуйте еще раз:  ";
@@ -259,7 +260,7 @@ void work_hand() {
         cout << "6: Показать результат работы стандартного алгоритма" << endl;
         cout << "7: Закончить работу с введенной парой матриц" << endl;
         cin >> ch;
-        cout << ch << endl;
+        //cout << ch << endl;
         switch(ch) {
             case '0': A.show(); break;
             case '1': B.show(); break;
@@ -285,7 +286,14 @@ void work_hand() {
     free_matr(a, na);
     free_matr(b, nb);
 }
-void compare() {
+struct res_comp {
+    int memory_standart;
+    int memory_sparse;
+    long long time_standart;
+    long long time_sparse;
+    double percent;
+};
+int compare() {
     int i, j, k;
     cout << "Введите кол-во строк и столбцов первой матрицы и кол-во столбцов второй [1, " << MAX_SIZE << "]: ";
     i = j = k = 0;
@@ -320,13 +328,49 @@ void compare() {
     time_t t4 = clock();
     cout << "Время умножения в стандартном виде: "  << t4 - t3 << endl;
 
-    cout << "Память, необходимая для хранения стандартной матрицы " << (i * j + j * k) * sizeof(int) << endl;
-    cout << "Память, необходимая для зранения разряженной матрицы " << RES.memory() << endl;
+    cout << "Память, необходимая для хранения стандартной матрицы " << (i * j) * sizeof(int) << endl;
+    cout << "Память, необходимая для хранения разряженной матрицы " << A.memory() << endl;
+    //A.show();
     free_matr(a, i);
     free_matr(b, j);
     free_matr(res, i);
 
+}
+res_comp my_compare(int n, double percent) {
+    int i, j, k;
+    i = j = k = n;
+    int **a = generate(i, j, percent, -R_MAX, R_MAX);
+    int **b = generate(j, k, percent, -R_MAX, R_MAX);
 
+    CSparse_matrix A(i, j, a);
+    CSparse_matrix B(j, k, b);
+
+    time_t t1 = clock();
+    CSparse_matrix RES = A * B;
+    time_t t2 = clock();
+
+    time_t t3 = clock();
+    int ** res = mult_standart(a, i, j, b, j, k);
+    time_t t4 = clock();
+    res_comp r_c;
+    r_c.memory_sparse = A.memory();
+    r_c.memory_standart = (i * j) * sizeof(int);
+    r_c.percent = percent;
+    r_c.time_sparse = t2 - t1;
+    r_c.time_standart = t4 - t3;
+    //A.show();
+    free_matr(a, i);
+    free_matr(b, j);
+    free_matr(res, i);
+    return r_c;
+
+}
+int main2() {
+    for(double i = 0.01; i <= 10; i *= 5) {
+        res_comp r = my_compare(500, i);
+        cout << r.percent << " " << r.time_standart << " " << r.time_sparse << " "
+            << r.memory_standart << " " << r.memory_sparse << endl;
+    }
 }
 int main() {
     srand(time(0));

@@ -9,7 +9,7 @@
 #include "CList.h"
 class CSparse_matrix {
 private:
-    vector <int> A;  // сделать векторы
+    vector <int> A;
     vector <int> JA;
     int NA;
     int n;
@@ -26,7 +26,6 @@ public:
     void show();
     int memory();
     int** to_standart();
-
 };
 
 

@@ -217,5 +217,5 @@ void CSparse_matrix::show() {
     cout << endl;
 }
 int CSparse_matrix::memory() {
-    return NA * 2 + m;
+    return (NA * 2 + m) * sizeof(int);
 }
