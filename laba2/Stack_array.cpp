@@ -90,7 +90,7 @@ void Stack_array::show()
 {
     int i;
     if(top == 0) { cout << "Stack is empty!"; }
-    for(i = 0; i < tыop; i++) { cout << arr[i] << " "; }
+    for(i = 0; i < top; i++) { cout << arr[i] << " "; }
     cout << endl;
 }
 bool Stack_array::is_full() {

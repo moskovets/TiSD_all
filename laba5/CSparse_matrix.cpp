@@ -8,7 +8,7 @@ CSparse_matrix& CSparse_matrix::operator=(const CSparse_matrix &obj) {
     if (this == &obj) {
         return *this;
     }
-    if(n )
+    //if(n)
     if(IA_head) free_all(IA_head);
     NA = obj.NA;
 
@@ -105,9 +105,9 @@ void CSparse_matrix::transposition() {
     IA_head = NULL;
     my_list* IA_tail = NULL; //куда писать следующий список
     int flag = 0;
-
+    NA = 0;
     for(int i = 0; i < m; i++) {
-        my_list* tmp = create_node((int) A.size());
+        my_list* tmp = create_node(NA);
         if(!IA_head) {
             IA_head = IA_tail = tmp;
         }
@@ -119,13 +119,14 @@ void CSparse_matrix::transposition() {
         for(int j = 0; j < new_A[i].size(); j++) {
             A.push_back(new_A[i][j]);
             JA.push_back(new_JA[i][j]);
+            NA++;
             flag = 1;
         }
         if(flag == 0) {
             tmp->value = INF;
         }
     }
-    NA = A.size();
+    //NA = A.size();
     IA_tail->next = create_node(NA);
     swap(n, m);
 }
@@ -162,9 +163,9 @@ CSparse_matrix CSparse_matrix::operator*(CSparse_matrix &obj) {
             int A2_end = tmp2_i->next->value;
             for(int k1 = A1_begin, k2 = A2_begin; k1 < A1_end && k2 < A2_end; ) {
                 if(JA[k1] == copy.JA[k2]) {
-                    mult += A[k1] * copy.A[k2];
-                    k1++;
-                    k2++;
+                    mult += A[k1++] * copy.A[k2++];
+                    //k1++;
+                    //k2++;
                 }
                 else if(JA[k1] < copy.JA[k2]) {
                     k1++;
@@ -217,5 +218,5 @@ void CSparse_matrix::show() {
     cout << endl;
 }
 int CSparse_matrix::memory() {
-    return (NA * 2 + m) * sizeof(int);
+    return (NA * 2 + m) * sizeof(int) + m;
 }

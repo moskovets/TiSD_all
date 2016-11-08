@@ -6,7 +6,7 @@
  */
 int** mult_standart(int** arr1, int n1, int m1, int** arr2, int n2, int m2)
 {
-    assert(m1 == n2);
+    //assert(m1 == n2);
     int** res = new int* [n1];
     for(int i = 0; i < n1; i++) {
         res[i] = new int [m2];
@@ -56,7 +56,12 @@ int **generate(int n, int m, double percent, int l, int r) {
         }
     }
     for(int i = 0; i < col; i++) {
-        matr[rand_int(n)][rand_int(m)] = rand_int(r - l) + l;
+        int j = rand_int(n);
+        int k = rand_int(m);
+        if(matr[j][k] != 0)
+            i--;
+        else
+            matr[j][k] = rand_int(r - l) + l;
     }
     return matr;
 }
@@ -65,7 +70,7 @@ void free_matr(int **a, int n) {
     for(int i = 0; i < n; i++) {
         delete[] a[i];
     }
-    delete a;
+    delete[] a;
 }
 void print_matr(int **a, int n, int m) {
     for(int i = 0; i < n; i++) {
@@ -180,7 +185,7 @@ int ** auto_input(int* n, int* m) {
     }
 
     cout << "Конец диапазона значений: " << endl;
-    while(!(scanf("%d", &r) && (r >= -R_MAX) && (r <= R_MAX) && (l <= r))) {
+    while(!(scanf("%d", &r) && (r >= -R_MAX) && (r <= R_MAX) && (l <= r) && (r - l != 0 || r != 0))) {
         cout << "error, попробуйте еще раз:  ";
         r = R_MAX + 1;
     }
@@ -190,7 +195,7 @@ int ** auto_input(int* n, int* m) {
 int ** input_matr(int *n, int *m) {
     int tmp;
     //*n = 0;
-    cout << "Марица\n";
+    cout << "Матрица\n";
     /*cout << "Введите кол-во строк [1, " << MAX_SIZE << "]: ";
     while(!(scanf("%d", n) && (*n >= 1) && (*n <= MAX_SIZE))) {
         cout << "error, попробуйте еще раз:  ";
@@ -286,6 +291,7 @@ void work_hand() {
     free_matr(a, na);
     free_matr(b, nb);
 }
+// 1 500 500 500 50
 struct res_comp {
     int memory_standart;
     int memory_sparse;
@@ -293,7 +299,7 @@ struct res_comp {
     long long time_sparse;
     double percent;
 };
-int compare() {
+void compare() {
     int i, j, k;
     cout << "Введите кол-во строк и столбцов первой матрицы и кол-во столбцов второй [1, " << MAX_SIZE << "]: ";
     i = j = k = 0;
@@ -328,8 +334,8 @@ int compare() {
     time_t t4 = clock();
     cout << "Время умножения в стандартном виде: "  << t4 - t3 << endl;
 
-    cout << "Память, необходимая для хранения стандартной матрицы " << (i * j) * sizeof(int) << endl;
-    cout << "Память, необходимая для хранения разряженной матрицы " << A.memory() << endl;
+    cout << "Память, необходимая для хранения стандартной матрицы " << (j * k) * sizeof(int) << endl;
+    cout << "Память, необходимая для хранения разряженной матрицы " << B.memory() << endl;
     //A.show();
     free_matr(a, i);
     free_matr(b, j);
