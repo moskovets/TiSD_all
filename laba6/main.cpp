@@ -1,6 +1,9 @@
 #include <iostream>
 #include "BST.h"
-
+/*
+ *  c++ -std=c++11 *.cpp *.h
+ valgrind ./a.out
+ */
 void tree_from_file(BST &tree)
 {
     ifstream inp;
@@ -53,6 +56,7 @@ int main(int argc, char* argv[]) {
     int b;
     BST tree;
     char c;
+    int col;
     while(true)
     {
 
@@ -108,8 +112,12 @@ int main(int argc, char* argv[]) {
                 }
                 break;
             case 6:
+                cout << "Введите букву: ";
                 cin >> c;
-                tree.find_letter(c);
+                cout << "Искомые слова: ";
+                col = tree.find_letter(c);
+                cout << "\nКоличество слов: " << col << endl;
+                tree.show_as_tree(c);
                 break;
             case 7:
                 time_compare();

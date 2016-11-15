@@ -25,7 +25,7 @@ private:
     bool printable = true;
     void print(element* tmp, int deep, bool flag, char c = '\0');
     void delete_tree(element* tmp);
-    void for_find_letter(element* tmp, char c = '\0');
+    int for_find_letter(element* tmp, char c = '\0');
     void operator_copy(element **head, element *tmp);
     void print_tree(element *h, char c = '\0');
     void RootLR(element *tmp);
@@ -35,7 +35,7 @@ private:
 public:
     BST(const BST &obj);
     BST();
-    void find_letter(char c);
+    int find_letter(char c);
 
     BST& operator=(const BST& obj);
     void insert(char *str);

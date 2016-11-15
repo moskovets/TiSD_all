@@ -8,7 +8,7 @@
 #define KRED  "\x1B[31m"
 void log(const char *str)
 {
-    cout << endl << "l: " << str << endl;
+  ;  //cout << endl << "l: " << str << endl;
 }
 
 BST& BST::operator=(const BST &obj) {
@@ -206,8 +206,9 @@ void BST::print_tree(element *h, char c) {
                 flag = 1;
             }
             probel(step - 4);
-            cout << "|";
+            cout << " ";
         }
+        cout << endl;
         cout << endl;
         level++;
     }
@@ -230,13 +231,15 @@ void BST::show_as_tree(char c) {
 }
 BST::~BST() {
     log("~");
-    //delete_tree(head);
+    delete_tree(head);
+    head = NULL;
 }
 void BST::delete_tree(element *tmp) {
     if(tmp) {
         delete_tree(tmp->left);
         delete_tree(tmp->right);
         delete tmp;
+        tmp = NULL;
     }
 }
 BST::BST(const BST &obj) {
@@ -277,25 +280,25 @@ bool BST::find(char *str) {
         }
     }
 }
-void BST::for_find_letter(element *tmp, char c) {
+int BST::for_find_letter(element *tmp, char c) {
     if(tmp) {
         if(tmp->word[0] == c) {
             cout << tmp->word << " ";
-            for_find_letter(tmp->left, c);
-            for_find_letter(tmp->right, c);
+            return 1 + for_find_letter(tmp->left, c) + for_find_letter(tmp->right, c);
         }
-        else if(tmp->word[0] < c) {
-            for_find_letter(tmp->left, c);
+        else if(tmp->word[0] > c) {
+            return for_find_letter(tmp->left, c);
         }
         else {
-            for_find_letter(tmp->right, c);
+            return for_find_letter(tmp->right, c);
         }
     }
+    return 0;
 }
-void BST::find_letter(char c) {
-    for_find_letter(head, c);
-    cout << endl;
-    show_as_tree(c);
+int BST::find_letter(char c) {
+    return for_find_letter(head, c);
+    //cout << endl;
+    //show_as_tree(c);
 }
 
 void BST::LRootR(element *tmp) {
