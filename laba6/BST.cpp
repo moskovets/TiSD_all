@@ -102,20 +102,21 @@ void BST::delete_remove(element* prev, element *tmp) {
             new_elem = a;
             a = a->left;
         }
-        else if(a->right) {
+        /*else if(a->right) {
             new_elem = a;
             a = a->right;
-        }
+            break;
+        }*/
         else {
             break;
         }
     }
     strcpy(tmp->word, a->word);
     if(new_elem->left == a) {
-        new_elem->left = NULL;
+        new_elem->left = a->right;
     }
     else {
-        new_elem->right = NULL;
+        new_elem->right = a->right;
     }
     delete a;
 }
