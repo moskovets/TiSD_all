@@ -10,7 +10,7 @@ void CHashTableOpen<T>::Show() {
         if(status[i]) {
             ElementTable<T> *tmp = table[i];
             while(tmp) {
-                cout << table[i]->value << " ";
+                cout << tmp->value << " ";
                 tmp = tmp->next;
             }
         }
@@ -23,7 +23,7 @@ CHashTableOpen<T>::CHashTableOpen(int Start_size) {
     tableSize = Start_size;
     table = new ElementTable<T>* [tableSize];
     status = new bool[tableSize]; // 0 - pusto, 1 - is
-    cout << "I was here" << endl;
+    //cout << "I was here" << endl;
     for (int i = 0; i < tableSize; ++i) {
         status[i] = 0;
         table[i] = NULL;
@@ -44,7 +44,10 @@ CHashTableOpen<T>::~CHashTableOpen() {
     delete[] table;
     delete[] status;
 }
-
+template <typename T>
+int CHashTableOpen<T>::Memory() {
+    return sizeof(ElementTable<T>) * count_of_elem;
+}
 template <typename T>
 void CHashTableOpen<T>::New_Table(int new_size) {
     assert(new_size > tableSize);
@@ -53,6 +56,7 @@ void CHashTableOpen<T>::New_Table(int new_size) {
         ElementTable<T> *tmp = table[i];
         while(tmp) {
             A.push(tmp);
+            //delete tmp;
             tmp = tmp->next;
         }
     }
@@ -80,13 +84,13 @@ void CHashTableOpen<T>::New_Table(int new_size) {
 template <typename T>
 bool CHashTableOpen<T>::Insert(T k) {
     unsigned int h = hash_function(k) % tableSize;
-    if(status[h] == 0) {
+    ElementTable<T> *tmp = table[h];
+    if(status[h] == 0 || !tmp) {
         table[h] = new ElementTable<T>(k);
         status[h] = 1;
         count_of_elem++;
         return true;
     }
-    ElementTable<T> *tmp = table[h];
     if(tmp->value == k) {
         tmp->value.count++;
         return false;
@@ -107,17 +111,17 @@ bool CHashTableOpen<T>::Insert(T k) {
 }
 
 template <typename T>
-bool CHashTableOpen<T>::Search_element(T x) {
+bool CHashTableOpen<T>::Search(T x) {
     unsigned int h = hash_function(x) % tableSize;
-    if(status[h] == 0) {
+    ElementTable<T> *tmp = table[h];
+    if(status[h] == 0 || !tmp) {
         return false;
     }
-    ElementTable<T> *tmp = table[h];
     while(tmp) {
-        tmp = tmp->next;
         if(tmp->value == x) {
             return true;
         }
+        tmp = tmp->next;
     }
     return false;
 }
@@ -125,16 +129,18 @@ bool CHashTableOpen<T>::Search_element(T x) {
 template <typename T>
 bool CHashTableOpen<T>::Delete_element(T k) {
     unsigned int h = hash_function(k) % tableSize;
-    if(status[h] == 0) {
+    ElementTable<T> *tmp = table[h];
+    if(status[h] == 0 || !tmp) {
         return false;
     }
-    ElementTable<T> *tmp = table[h];
     if(tmp->value == k) {
         tmp->value.count--;
         if(tmp->value.count == 0) {
+            tmp = tmp->next;
             delete table[h];
             count_of_elem--;
-            table[h] = NULL;
+            table[h] = tmp;
+            status[h] = 0;
         }
         return true;
     }

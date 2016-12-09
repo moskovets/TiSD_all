@@ -35,12 +35,12 @@ public:
         count = 0;
     }
     Data<T>(Data<T> const &obj) {
-        cout << "copy_data:" << obj << endl;
+        //cout << "copy_data:" << obj << endl;
         value = obj.value;
         count = obj.count;
     }
     Data<T>& operator = (Data<T> const &obj) {
-        cout << "ko";
+        //cout << "ko";
         if(this != &obj) {
             value = obj.value;
             count = obj.count;

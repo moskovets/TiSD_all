@@ -15,6 +15,8 @@ void CAVL<T>::free_tree(AVL_Node<T> * &tmp) {
 template <typename T>
 CAVL<T>::~CAVL() {
     free_tree(head);
+    count_of_element = 0;
+    head = NULL;
 }
 template <typename T>
 void CAVL<T>::Insert(T x) {
@@ -40,7 +42,7 @@ int CAVL<T>::cnt_value(AVL_Node<T> * t) {
 }
 template <typename T>
 T CAVL<T>::key_value(AVL_Node<T> * t) {
-    return t == NULL ? (-2) : t->key;/////////////////////////TODO
+    return t == NULL ? (0) : t->key;/////////что это?////////////////TODO
 }
 template <typename T>
 void CAVL<T>::right(AVL_Node<T> * &t) {
@@ -114,9 +116,15 @@ void CAVL<T>::balance(AVL_Node<T>* &t) // балансировка узла p
     }
 }
 template <typename T>
+int CAVL<T>::Memory() {
+    //cout << count_of_element << endl;
+    return count_of_element * sizeof(*head);
+}
+template <typename T>
 void CAVL<T>::add_to_avl(AVL_Node<T>* &t, AVL_Node<T>* tmp) {
     if(t == NULL) {
         t = tmp;
+        count_of_element++;
         return;
     }
     if(t->key == tmp->key) {
@@ -159,9 +167,10 @@ bool CAVL<T>::delete_from_avl(AVL_Node<T>* &t, T x) {
     } else if(x > t->key) {
         delete_from_avl(t->right, x);
     } else {
-        if(--t->key.count) {
+        if(--t->key.count == 0) {
             AVL_Node<T> *i = t->left;
             AVL_Node<T> *j = t->right;
+            count_of_element--;
             delete t;
             t = NULL;
             if (j == NULL) {
@@ -174,7 +183,6 @@ bool CAVL<T>::delete_from_avl(AVL_Node<T>* &t, T x) {
             balance(m);
             t = m;
         }
-
     }
     t->cnt--;
     balance(t);

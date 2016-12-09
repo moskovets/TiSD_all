@@ -3,7 +3,7 @@
  * и специально для Леши - все шаблонное
  */
 /*
- *remove bool + вхождения
+ *с подсчетом памяти явно что-то не так
  */
 #include "CAVL.cpp"
 #include "CBST.cpp"
@@ -11,7 +11,7 @@
 #include "CHashTableOpen.cpp"
 
 int compare_count;
-void log(const char *str) { cout << "log: " << str << endl;}
+void log(const char *str) { ; /*cout << "log: " << str << endl;*/ }
 void probel(int n) {
     for(int i = 0; i < n; i++) {
         cout << " ";
@@ -93,9 +93,10 @@ void show(T* tree) {
 template <typename T>
 void from_file_to_struct(T* obj) {
     ifstream inp;
-    inp.open("/home/moskov/ClionProjects/TiSD/laba6/data.txt");
+    inp.open("/home/moskov/ClionProjects/TiSD/laba7/data.txt");
     char ch;
-    while(cin >> ch) {
+    while(inp >> ch) {
+        //cout << ch;
         if(isalpha(ch)) {
             obj->Insert(Data<char>(ch));
         }
@@ -136,23 +137,26 @@ void work_with_tree(T* tree) {
             case '3':
                 cout << "Введите символ: " << endl;
                 cin >> ch;
-                tree->Insert(Data<char>(ch));
+                if(isalpha(ch))
+                    tree->Insert(Data<char>(ch));
+                else
+                    cout << "Это не буква!" << endl;
                 break;
             case '4':
                 cout << "Введите символ: " << endl;
                 cin >> ch;
                 if(tree->Remove(Data<char>(ch))) {
-                    cout << "Буква успешно удалено" << endl;
+                    cout << "Буква успешно удалена" << endl;
                 }
                 else {
-                    cout << "Дерево не содержит указанную слово" << endl;
+                    cout << "Дерево не содержит указанную букву" << endl;
                 }
                 break;
             case '5':
                 cout << "Введите символ: " << endl;
                 cin >> ch;
                 while(tree->Remove(Data<char>(ch))) {;}
-                cout << "Буква успешно удалено" << endl;
+                cout << "Буква успешно удалена" << endl;
                 break;
             case '6':
                 cout << "Введите символ: " << endl;
@@ -190,7 +194,10 @@ void work_with_table(T *table) {
             case '2':
                 cout << "Введите символ: " << endl;
                 cin >> ch;
-                table->Insert(Data<char>(ch));
+                if(isalpha(ch))
+                    table->Insert(Data<char>(ch));
+                else
+                    cout << "Это не буква!" << endl;
                 break;
             case '3':
                 cout << "Введите символ: " << endl;
@@ -211,7 +218,7 @@ void work_with_table(T *table) {
             case '5':
                 cout << "Введите символ: " << endl;
                 cin >> ch;
-                cout << (table->Search_element(Data<char>(ch)) ? "Буква есть в таблице" : "Буквы нет в таблице") << endl;
+                cout << (table->Search(Data<char>(ch)) ? "Буква есть в таблице" : "Буквы нет в таблице") << endl;
                 break;
             case '6':
                 return;
@@ -229,8 +236,9 @@ bool find(char ch, T* obj) {
     Data<char> tmp(ch);
     bool res = obj->Search(tmp);
     time_t t2 = clock();
-    cout << "Время работы:" << t2 - t1 << endl;
+    cout << "Время работы(мкс):" << t2 - t1 << endl;
     cout << "Кол-во сравнений: " << compare_count << endl;
+    cout << "Объем памяти(байт): " << obj->Memory() << endl;
     //TODO подсчет памяти
     return res;
 }
@@ -240,7 +248,7 @@ void interface() {
     CBST<Data<char>> * binary_tree = new CBST<Data<char>>();
     CAVL<Data<char>> * avl_tree = new CAVL<Data<char>>();
     CHashTableClose<Data<char>> *close_table = new CHashTableClose<Data<char>>(4);
-    cout << "ok" << endl;
+    //cout << "ok" << endl;
     CHashTableOpen<Data<char>> *open_table = new CHashTableOpen<Data<char>>(4);
     string str;
     while(true)
@@ -281,8 +289,10 @@ void interface() {
                 cout << "Введите символ: " << endl;
                 cin >> ch;
                 cout << "Время поиска"<< endl;
-                cout << "Бинарное дерево: "; find(ch, binary_tree);
-                cout << "Avl дерево: "; find(ch, avl_tree);
+                cout << "\nБинарное дерево: \n"; find(ch, binary_tree);
+                cout << "\nAvl дерево: \n"; find(ch, avl_tree);
+                cout << "\nТаблица с открытой адресацией: \n"; find(ch, open_table);
+                cout << "\nТаблица с закрытой адресацией: \n"; find(ch, close_table);
                 //
                 break;
             case '6':

@@ -12,7 +12,7 @@ struct element {
     element *left = NULL;
     element *right = NULL;
     element(T x) {
-        cout << "element:" << x << endl;
+        //cout << "element:" << x << endl;
         key = T(x);
         left = NULL;
         right = NULL;
@@ -24,6 +24,7 @@ template <typename T>
 class CBST {
 private:
     element<T> *head = NULL;
+    int count_of_element = 0;
     void delete_tree(element<T>* tmp);
     void operator_copy(element<T> **head, element<T> *tmp);
     void delete_remove(element<T>* prev, element<T> *tmp);
@@ -41,6 +42,7 @@ public:
     friend void show_as_tree(X* tree);
     template <typename X>
     friend void show(X* tree);
+    int Memory();
 
     };
 

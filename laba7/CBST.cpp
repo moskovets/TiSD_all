@@ -21,19 +21,26 @@ void CBST<T>::operator_copy(element<T> **head, element<T> *tmp) {
     }
 }
 template <typename T>
+int CBST<T>::Memory() {
+    //cout << count_of_element << endl;
+    return sizeof(element<T>) * count_of_element;
+}
+template <typename T>
 void CBST<T>::Insert(T x) {
     log("insert");
-    cout << x << endl;
+    //cout << x << endl;
     element<T> *new_elem = new element<T>(x);
-    cout << new_elem->key << endl;
+    //cout << new_elem->key << endl;
     element<T> *tmp = head;
     if(!head) {
         head = new_elem;
+        count_of_element++;
         return;
     }
     while(1) {
         if(!tmp) {
             tmp = new_elem;
+            count_of_element++;
             break;
         }
         if(tmp->key == x) {
@@ -46,6 +53,7 @@ void CBST<T>::Insert(T x) {
             }
             else {
                 tmp->right = new_elem;
+                count_of_element++;
                 break;
             }
         }
@@ -55,6 +63,7 @@ void CBST<T>::Insert(T x) {
             }
             else {
                 tmp->left = new_elem;
+                count_of_element++;
                 break;
             }
         }
@@ -63,6 +72,7 @@ void CBST<T>::Insert(T x) {
 template <typename T>
 void CBST<T>::delete_remove(element<T>* prev, element<T> *tmp) {
     element<T> *b = NULL;
+    count_of_element--;
     int flag = 0;
     if((!tmp->left) && (!tmp->right)) {
         b = NULL;
@@ -159,6 +169,7 @@ void CBST<T>::delete_tree(element<T> *tmp) {
         delete_tree(tmp->right);
         delete tmp;
         tmp = NULL;
+        count_of_element = 0;
     }
 }
 template <typename T>
@@ -171,6 +182,7 @@ CBST<T>::CBST(const CBST &obj) {
 template <typename T>
 CBST<T>::CBST() {
     head = NULL;
+    count_of_element = 0;
 }
 template <typename T>
 bool CBST<T>::Search(T x) {
@@ -180,10 +192,10 @@ bool CBST<T>::Search(T x) {
             return true;
         }
         if(tmp->key < x) {
-            tmp = tmp->left;
+            tmp = tmp->right;
         }
         else {
-            tmp = tmp->right;
+            tmp = tmp->left;
         }
     }
     return false;

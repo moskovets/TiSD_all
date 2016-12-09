@@ -24,7 +24,10 @@ CHashTableClose<T>::CHashTableClose(int Start_size) {
     }
     count_of_elem = 0;
 }
-
+template <typename T>
+int CHashTableClose<T>::Memory() {
+    return tableSize * sizeof(T);
+}
 template <typename T>
 CHashTableClose<T>::~CHashTableClose() {
     delete[] table;
@@ -83,7 +86,7 @@ bool CHashTableClose<T>::Insert(T k) {
 }
 
 template <typename T>
-bool CHashTableClose<T>::Search_element(T x) {
+bool CHashTableClose<T>::Search(T x) {
     unsigned int h = hash_function(x) * 2 + 1;
     for (int i = 0; i < tableSize; ++i) {
         unsigned int j = (i * h) % tableSize;

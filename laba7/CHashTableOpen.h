@@ -31,7 +31,8 @@ public:
     ~CHashTableOpen();
     void New_Table(int new_size);
     bool Insert(T k);
-    bool Search_element(T x);
+    bool Search(T x);
+    int Memory();
     bool Delete_element(T x);
     void Show();
 };

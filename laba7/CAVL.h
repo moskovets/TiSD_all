@@ -40,9 +40,11 @@ private:
     //int index(AVL_Node* t, int x);
     void free_tree(AVL_Node<T> * &tmp);
     AVL_Node<T>* head = NULL;
+    int count_of_element = 0;
 public:
     CAVL() {}
     ~CAVL();
+    int Memory();
     void Insert(T x);
     bool Remove(T x);
     bool Search(T x);
