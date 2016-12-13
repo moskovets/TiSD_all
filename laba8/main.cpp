@@ -4,12 +4,13 @@
 
 using namespace std;
 void printer(int n, int m, int** arr) {
-    FILE *graph = fopen("/tmp/graph.gv", "w");
+    FILE *graph = fopen("/home/moskov/ClionProjects/TiSD/laba8/graph.gv", "w");
     fprintf(graph, "digraph G{\n");
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < m; j++) {
+    //for(int i = 0; i < m; i++)
+    for(int i = 1; i <= n; i++) {
+        for(int j = 1; j <= m; j++) {
             if(arr[i][j] != 0) {
-                fprintf(graph, "%d->%d\n", i, j);//,//head->value);
+                fprintf(graph, "\"%d\"->\"%d\"\n", i, j);//,//head->value);
             }
         }
     }
@@ -18,17 +19,7 @@ void printer(int n, int m, int** arr) {
 
 }
 
-/*template <typename T>
-void BT<T>::printer(element<T>*tmp, element<T>*parent, FILE *graph) {
 
-    if (tmp) {
-        if (parent != NULL)
-            fprintf(graph, "%d->%d\n",parent->value, tmp->value);
-        printer(tmp->left, tmp, graph);
-        printer(tmp->right, tmp, graph);
-    }
-}
-*/
 int ** new_arr(int n) {
     int **arr = new int* [n+1];
     for(int i = 0; i <= n; i++) {
@@ -49,6 +40,11 @@ int ** from_file_to_graph(int &n) {
     ifstream inp;
     inp.open("/home/moskov/ClionProjects/TiSD/laba8/data.txt");
     inp >> n;
+    if(n >= 1000 || n <= 0) {
+        cout << "Error!";
+        inp.close();
+        return NULL;
+    }
     int **arr = new_arr(n);
     int x, y;
     while(inp >> x) {
@@ -89,7 +85,7 @@ int main() {
                 break;
             case '1':
                 cout << "Введите кол-во вершин: ";
-                if(!(scanf("%d", &n)) || (n <= 0) || (n >= 5000))
+                if(!(scanf("%d", &n)) || (n <= 0) || (n >= 1000))
                     cout << "Error" << endl;
                 else {
                     if(arr)
@@ -127,7 +123,7 @@ int main() {
                 //work_with_tree(avl_tree);
                 break;
             case '3':
-                //printer();
+                printer(n, n, arr);
                 break;
             case '4':
                 cout << "До свиданья)" << endl;
